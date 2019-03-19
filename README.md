@@ -67,6 +67,6 @@ image{
 ## Challenges
 * The search function created to return the API link with the correct search queries could only take one arguement. This aws fixed by sending it a single array contained the different queries ex: [searchTerm, location, keyword].
 * Image metadata was not uniform, especially keywords. Some descriptions contained links still in html format and keywords sometimes appeared as one string seperated by commas.
- * A fix was to check if the keyword array was length 1, which usually meant it was a bunch of words with commas, and the use the string split function to make an array of keywords.
- * Image descriptions had too many variety with link formatting, no solution was found.
+  * A fix was to check if the keyword array was length 1, which usually meant it was a bunch of words with commas, and the use the string split function to make an array of keywords.
+  * Image descriptions had too many variety with link formatting, no solution was found.
 * Particle background does not grow with page when search results appear.
