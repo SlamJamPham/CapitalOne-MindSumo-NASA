@@ -1,15 +1,15 @@
-# Build an Image Search App with:
-## Vanilla JS, React.js, Angular 6 and Vue.js
+# Build an Image Search App using NASA API
+---
+Submission for the second round of the Capital One Software Engineering Summit. 
 
-All apps will contact the 500px Image Search API.
+The challenge can be found here.
+The final project can be found here.
 
-`https://api.500px.com/v1/photos/search?term=flowers`
+All apps will contact the NASA Image Search API.
 
-> 500px appears to have disabled consumer keys!! Try another image search API like [Unsplash](https://unsplash.com/developers)
+`https://images-api.nasa.gov/search?q=`
 
-> You will need a consumer key from 500px.com. Update `your-api-key-here` with your consumer key to use the app. After signing up, create an application here: https://500px.com/settings/applications
-
-All apps will use the skeleton CSS framework:
+The app uses the skeleton CSS framework for a simple, yet elegant look:
 
 ```html
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
@@ -18,41 +18,31 @@ All apps will use the skeleton CSS framework:
 And use this body style:
 
 ```css
-body {
+main,
+image{
   width: 80%;
   margin: 2em auto 0 auto;
 }
 ```
 
-#### This app demonstrates:
+#### Challenge Approach:
+The approach can be split up into three major sections (in order of priority and implmentation):
+* Search Engine
+  * Calling API
+  * Parsing Information
+  * Displaying Information
+* Modal data manipulation
+  * Pop up on image click
+  * Sending data to Modal
+  * Search with tags
+  * Social Media Sharing Tool
+* Design
+  * Aesthetic Look
+  * Interactive animations
 
-* User Input
-* DOM Events
-* API Requests
-* Conditional Rendering
-* Rendering Lists of Data
-
-## Vanilla JS
+# Section Overview
 ---
-
-* [x] Add search form to page
-* [x] Make API Request with search term when form is submitted
-* [x] Show loading image
-* [x] Append Results to the page
-* [x] Hide loading image
-
-## React.js
----
-
-* [x] Add search form to page
-* [x] Update state when input changes
-* [x] Make API Request with search term when form is submitted
-* [x] Show loading image
-* [x] Append Results to the page
-* [x] Hide loading image
-
-## Angular
----
+## 
 
 * [x] Add search form to page
 * [x] Update state when input changes
@@ -61,19 +51,3 @@ body {
 * [x] Append Results to the page
 * [x] Hide loading image
 
-## Vue.js
----
-
-* [x] Add search form to page
-* [x] Update state when input changes
-* [x] Make API Request with search term when form is submitted
-* [x] Show loading image
-* [x] Append Results to the page
-* [x] Hide loading image
-
-## STRETCH
-
-* [ ] Paginate Results with next/previous buttons
-* [ ] Click image to add to favorites
-* [ ] Append favorites to the page
-* [ ] Navigate between search page and favorites page
