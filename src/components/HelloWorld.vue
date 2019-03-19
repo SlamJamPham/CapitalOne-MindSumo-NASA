@@ -36,12 +36,6 @@ export default {
   props: {
     msg: String,
   },
-  mount() {
-    this.$nextTick(() => {
-      $('.HelloWorld').hide();
-      $('.HelloWorld').fadeIn('slow');
-    });
-  },
 };
 </script>
 

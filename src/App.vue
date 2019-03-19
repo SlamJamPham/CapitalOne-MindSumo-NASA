@@ -1,65 +1,65 @@
 <template>
   <div id="app">
     <div class = "main">
-      <modal 
-        v-show="isModalVisible" 
-        @close="closeModal" 
-        :image = "modalData" 
-        :keywords = "modalKeywords" 
+      <modal
+        v-show="isModalVisible"
+        @close="closeModal"
+        :image = "modalData"
+        :keywords = "modalKeywords"
         v-bind:url = "modalURL"/>
       <h1>{{title}}</h1>
         <form @submit.prevent="formSubmitted()">
           <div class="row">
             <div class="six columns">
               <label for="searchTerm">Search Term</label>
-              <input 
-                v-model="searchTerm" 
-                class="u-full-width" 
-                type="text" 
-                placeholder="Enter Search Here" 
-                id="searchTerm" 
+              <input
+                v-model="searchTerm"
+                class="u-full-width"
+                type="text"
+                placeholder="Enter Search Here"
+                id="searchTerm"
                 name="searchTerm">
             </div>
             <div class="six columns">
               <label for="keyword">Tags/Keywords</label>
-              <input 
-                v-model="keyword" 
-                class="u-full-width" 
-                type="text" 
-                placeholder="Optional" 
-                id="keyword" 
+              <input
+                v-model="keyword"
+                class="u-full-width"
+                type="text"
+                placeholder="Optional"
+                id="keyword"
                 name="keyword">
             </div>
           </div>
           <div class="row">
             <div class="six columns">
               <label for="location">Location</label>
-              <input 
-                v-model="location" 
-                class="u-full-width" 
-                type="text" 
-                placeholder="Optional" 
-                id="location" 
+              <input
+                v-model="location"
+                class="u-full-width"
+                type="text"
+                placeholder="Optional"
+                id="location"
                 name="location">
             </div>
             <div class="three columns">
               <label for="start_date">Start Year</label>
-              <input 
-                v-model="start_date" 
-                class="u-full-width" 
-                type="text" 
-                placeholder="Optional" 
-                id="start_date" 
+              <input
+                v-model="start_date"
+                class="u-full-width"
+                type="text"
+                placeholder="Optional"
+                id="start_date"
                 name="start_date">
             </div>
             <div class="three columns">
               <label for="end_date">End Year</label>
-              <input 
-                v-model="end_date" 
-                class="u-full-width" 
-                type="text" 
-                placeholder="Optional" 
-                id="end_date" 
+              <input
+                v-model="end_date"
+                class="u-full-width"
+                type="text"
+                placeholder="Optional"
+                id="end_date"
                 name="end_date">
             </div>
           </div>
@@ -67,16 +67,21 @@
         </form>
         <img  v-if="loading" src="http://www.kaosart.org/at_land/At-Land/imag/galaxia.gif">
         <div class="images" v-if="images" >
-          <img 
-            v-for="image in images" 
-            :key="image.nasa_id" 
-            v-bind:src="image.links[0].href" 
-            @click="showModal(image)" 
+          <img
+            v-for="image in images"
+            :key="image.nasa_id"
+            v-bind:src="image.links[0].href"
+            @click="showModal(image)"
             class = "hvr-bounce-in">
         </div>
       </div>
       <div class = "particles">
-        <vue-particles color="#000000" linesColor="#A9A9A9" :particlesNumber=90 :particleOpacity="0.7" ></vue-particles>
+        <vue-particles
+          color="#000000"
+          linesColor="#A9A9A9"
+          :particlesNumber=90
+          :particleOpacity="0.7">
+        </vue-particles>
       </div>
   </div>
 </template>
@@ -97,15 +102,14 @@ export default {
       images: [],
       loading: false,
 
-      //search queries
+      // search queries
       searchTerm: '',
       keyword: '',
       location: '',
       start_date: '1900',
       end_date: '2019',
-      
-      //data to pass to modal
-      modalData: null,
+
+      // data to pass to modal
       isModalVisible: false,
       modalData: [],
       modalKeywords: [],
@@ -113,7 +117,7 @@ export default {
     };
   },
   methods: {
-    //Searches NASA API and returns collection of data
+    // Searches NASA API and returns collection of data
     formSubmitted() {
       this.loading = true;
       this.images = [];
@@ -127,17 +131,17 @@ export default {
     showModal(data) {
       console.log(data.links[0].href);
       this.modalData = data;
-      let str = data.data[0].keywords[0];
+      const str = data.data[0].keywords[0];
 
-      //checks if keywords are in one string, if true = split the string
-      if(data.data[0].keywords.length == 1) this.modalKeywords= str.split(",");
+      // checks if keywords are in one string, if true = split the string
+      if (data.data[0].keywords.length === 1) this.modalKeywords = str.split(',');
       else this.modalKeywords = data.data[0].keywords;
-      this.modalURL=(data.links[0].href);
+      this.modalURL = (data.links[0].href);
       this.isModalVisible = true;
     },
     closeModal(info) {
-      //checks if user clicked on tag
-      if(info != ""){
+      // checks if user clicked on tag
+      if (info !== '') {
         this.location = '';
         this.searchTerm = '';
         this.keyword = info;
@@ -145,7 +149,7 @@ export default {
       }
       this.isModalVisible = false;
     },
-    
+
   },
 };
 </script>
@@ -165,7 +169,7 @@ export default {
   right: 0;
   z-index: 1;
   width: 80%;
-  
+
 }
 
 .images {

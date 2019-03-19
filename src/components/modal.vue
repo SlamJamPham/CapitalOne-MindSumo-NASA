@@ -1,26 +1,33 @@
+/* eslint-disable linebreak-style */
 <script >
-import VueGoodshareFacebook from "vue-goodshare/src/providers/Facebook.vue"
-import VueGoodshareTwitter from "vue-goodshare/src/providers/Twitter.vue"
+import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue';
+import VueGoodshareTwitter from 'vue-goodshare/src/providers/Twitter.vue';
+
 export default {
   name: 'modal',
   props: ['image', 'keywords', 'url'],
   component: {
     VueGoodshareFacebook,
+    VueGoodshareTwitter,
   },
   methods: {
     close(info) {
-      //returns keywords to search if tag clicked
-      this.$emit('close',info);
+      // returns keywords to search if tag clicked
+      this.$emit('close', info);
     },
   },
 };
 </script>
 
-
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop">
-        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+        <div
+          class="modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalTitle"
+          aria-hidden="true">
           <header
             class="modal-header"
             id="modalTitle">
@@ -91,7 +98,6 @@ export default {
   }
 
   .modal {
-
     background: rgb(255, 255, 255);
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
