@@ -1,38 +1,78 @@
 <template>
   <div id="app">
     <div class = "main">
-      <modal v-show="isModalVisible" @close="closeModal" :image = "modalData" :keywords = "modalKeywords" v-bind:url = "modalURL"/>
+      <modal 
+        v-show="isModalVisible" 
+        @close="closeModal" 
+        :image = "modalData" 
+        :keywords = "modalKeywords" 
+        v-bind:url = "modalURL"/>
       <h1>{{title}}</h1>
         <form @submit.prevent="formSubmitted()">
           <div class="row">
             <div class="six columns">
               <label for="searchTerm">Search Term</label>
-              <input v-model="searchTerm" class="u-full-width" type="text" placeholder="Enter Search Here" id="searchTerm" name="searchTerm">
+              <input 
+                v-model="searchTerm" 
+                class="u-full-width" 
+                type="text" 
+                placeholder="Enter Search Here" 
+                id="searchTerm" 
+                name="searchTerm">
             </div>
             <div class="six columns">
               <label for="keyword">Tags/Keywords</label>
-              <input v-model="keyword" class="u-full-width" type="text" placeholder="Optional" id="keyword" name="keyword">
+              <input 
+                v-model="keyword" 
+                class="u-full-width" 
+                type="text" 
+                placeholder="Optional" 
+                id="keyword" 
+                name="keyword">
             </div>
           </div>
           <div class="row">
             <div class="six columns">
               <label for="location">Location</label>
-              <input v-model="location" class="u-full-width" type="text" placeholder="Optional" id="location" name="location">
+              <input 
+                v-model="location" 
+                class="u-full-width" 
+                type="text" 
+                placeholder="Optional" 
+                id="location" 
+                name="location">
             </div>
             <div class="three columns">
               <label for="start_date">Start Year</label>
-              <input v-model="start_date" class="u-full-width" type="text" placeholder="Optional" id="start_date" name="start_date">
+              <input 
+                v-model="start_date" 
+                class="u-full-width" 
+                type="text" 
+                placeholder="Optional" 
+                id="start_date" 
+                name="start_date">
             </div>
             <div class="three columns">
               <label for="end_date">End Year</label>
-              <input v-model="end_date" class="u-full-width" type="text" placeholder="Optional" id="end_date" name="end_date">
+              <input 
+                v-model="end_date" 
+                class="u-full-width" 
+                type="text" 
+                placeholder="Optional" 
+                id="end_date" 
+                name="end_date">
             </div>
           </div>
           <button class="button-primary" type="submit">Search</button>
         </form>
         <img  v-if="loading" src="http://www.kaosart.org/at_land/At-Land/imag/galaxia.gif">
         <div class="images" v-if="images" >
-          <img v-for="image in images" :key="image.nasa_id" v-bind:src="image.links[0].href" @click="showModal(image)" class = "hvr-bounce-in">
+          <img 
+            v-for="image in images" 
+            :key="image.nasa_id" 
+            v-bind:src="image.links[0].href" 
+            @click="showModal(image)" 
+            class = "hvr-bounce-in">
         </div>
       </div>
       <div class = "particles">
@@ -101,9 +141,9 @@ export default {
         this.location = '';
         this.searchTerm = '';
         this.keyword = info;
+        this.formSubmitted();
       }
       this.isModalVisible = false;
-      this.formSubmitted();
     },
     
   },
