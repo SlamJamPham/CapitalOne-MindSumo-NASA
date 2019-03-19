@@ -2,7 +2,7 @@
 
 Submission for the second round of the Capital One Software Engineering Summit. 
 
-The challenge can be found here.
+The challenge can be found [here](https://www.mindsumo.com/contests/nasa-image-archive).
 The final project can be found here.
 
 ## List of of Frameworks and APIs
@@ -14,7 +14,7 @@ The final project can be found here.
 * [Vue-Particles](https://github.com/creotip/vue-particles) to get background design
 
 #### Challenge Approach:
-The approach can be split up into three major sections (in order of priority and implmentation):
+An agile apprach was used. Each spring can be split into three major sections (in order of priority and implmentation):
 * Search Engine
   * Calling API
   * Parsing Information
