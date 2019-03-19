@@ -70,3 +70,6 @@ image{
   * A fix was to check if the keyword array was length 1, which usually meant it was a bunch of words with commas, and the use the string split function to make an array of keywords.
   * Image descriptions had too many variety with link formatting, no solution was found.
 * Particle background does not grow with page when search results appear.
+
+## Final Comments
+The animations work best on Google Chrome. This was my first ever web app and this was a great learning experience, I highly reccommend doing coding challenges to further your skills and knowledge because they challenge you with unique problems that task you with using things that you never would've touched before or learn new ways to find solutions.
