@@ -6,9 +6,9 @@ The challenge can be found [here](https://www.mindsumo.com/contests/nasa-image-a
 The final project can be found [here](https://phillippham-capitalone-nasa.herokuapp.com/?fbclid=IwAR2TiZuFdV0fE8mBv1vZzuWh874X1qxS9aMyKoPdRRIO633T5K2nY74UvTc).
 
 ## List of of Frameworks and APIs
-* [Vue](https://vuejs.org/) for backend
-* [Skeleton](http://getskeleton.com/) for frontend
-* [NASA Image API](https://api.nasa.gov/api.html#Images) to search NASA database
+* [Vue](https://vuejs.org/)
+* [Skeleton](http://getskeleton.com/) 
+* [NASA Image API](https://api.nasa.gov/api.html#Images) 
 * [VueGoodshare](https://github.com/koddr/vue-goodshare/blob/master/src/VueGoodshare.vue) to share to scoial media
 * [Hover](https://github.com/IanLunn/Hover) for animations
 * [Vue-Particles](https://github.com/creotip/vue-particles) to get background design
