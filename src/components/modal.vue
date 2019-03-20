@@ -11,9 +11,9 @@ export default {
     VueGoodshareTwitter,
   },
   methods: {
-    close(info) {
+    close([info, center]) {
       // returns keywords to search if tag clicked
-      this.$emit('close', info);
+      this.$emit('close', [info, center]);
     },
   },
 };
@@ -51,7 +51,13 @@ export default {
             class="modal-body"
             id="modalDescription">
             <slot name="body">
+                <button
+                type="button"
+                class="btn-center"
+                @click="close(['' , image.data[0].center])"
+                aria-label="Close modal">
                 Taken at {{image.data[0].center}}
+              </button>
                 <br />
                 {{image.data[0].description}}
             </slot>
@@ -64,7 +70,7 @@ export default {
                 <button
                 type="button"
                 class="btn-tag"
-                @click="close(info)"
+                @click="close([info, ''])"
                 aria-label="Close modal">
                 {{info}}
               </button>
@@ -72,7 +78,7 @@ export default {
               <button
                 type="button"
                 class="btn-green"
-                @click="close('')"
+                @click="close(['',''])"
                 aria-label="Close modal">
                 Close me!
               </button>
@@ -147,6 +153,16 @@ export default {
   .btn-tag {
     border: none;
     font-size: 10px;
+    padding: 0px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #4AAE9B;
+    background: transparent;
+  }
+
+  .btn-center {
+    border: none;
+    font-size: 20px;
     padding: 0px;
     cursor: pointer;
     font-weight: bold;

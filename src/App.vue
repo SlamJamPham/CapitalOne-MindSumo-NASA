@@ -33,7 +33,7 @@
           </div>
           <div class="row">
             <div class="six columns">
-              <label for="location">Location</label>
+              <label for="location">Center</label>
               <input
                 v-model="location"
                 class="u-full-width"
@@ -66,6 +66,7 @@
           <button class="button-primary" type="submit">Search</button>
         </form>
         <img  v-if="loading" src="http://www.kaosart.org/at_land/At-Land/imag/galaxia.gif">
+        <h2  v-if="nothing"> There seems to be nothing out here...</h2>
         <div class="images" v-if="images" >
           <img
             v-for="image in images"
@@ -101,6 +102,7 @@ export default {
       title: 'NASA Image Search',
       images: [],
       loading: false,
+      nothing: false,
 
       // search queries
       searchTerm: '',
@@ -125,26 +127,39 @@ export default {
         .then((images) => {
           this.images = images;
           this.loading = false;
+          if (this.images.length === 0) this.nothing = true;
+          else this.nothing = false;
         });
     },
-
+    containsKey(obj, key) {
+      return Object.keys(obj).includes(key);
+    },
     showModal(data) {
-      console.log(data.links[0].href);
       this.modalData = data;
-      const str = data.data[0].keywords[0];
-
-      // checks if keywords are in one string, if true = split the string
-      if (data.data[0].keywords.length === 1) this.modalKeywords = str.split(',');
-      else this.modalKeywords = data.data[0].keywords;
+      // checks if array has keyword parameter
+      if (this.containsKey(data.data[0], 'keywords')) {
+        // checks if keywords are in one string, if true = split the string
+        const str = data.data[0].keywords[0];
+        this.modalKeywords = [];
+        if (str.indexOf(',') > -1 && data.data[0].keywords.length === 1) this.modalKeywords = str.split(',');
+        else if (str.indexOf(';') > -1 && data.data[0].keywords.length === 1) this.modalKeywords = str.split(';');
+        else this.modalKeywords = data.data[0].keywords;
+      }
       this.modalURL = (data.links[0].href);
       this.isModalVisible = true;
     },
-    closeModal(info) {
+    closeModal([info, center]) {
       // checks if user clicked on tag
       if (info !== '') {
         this.location = '';
         this.searchTerm = '';
         this.keyword = info;
+        this.formSubmitted();
+      }
+      else if (center !== '') {
+        this.searchTerm = '';
+        this.keyword = '';
+        this.location = center;
         this.formSubmitted();
       }
       this.isModalVisible = false;
@@ -157,8 +172,10 @@ export default {
 <style>
 
 .particles{
+  position: fixed;
   z-index: 0;
-  height: 110vh;
+  height: 100%;
+  width: 100%
 }
 
 .main{
@@ -210,8 +227,8 @@ img {
 .hvr-bounce-in:hover,
 .hvr-bounce-in:focus,
 .hvr-bounce-in:active {
-  -webkit-transform: scale(1.25);
-  transform: scale(1.25);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
   -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
