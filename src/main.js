@@ -5,9 +5,11 @@ import VueParticles from 'vue-particles';
 import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue';
 import VueGoodshareTwitter from 'vue-goodshare/src/providers/Twitter.vue';
 import modal from './components/modal.vue';
+import modalFav from './components/modalFav.vue';
 import App from './App.vue';
 
 Vue.component('modal', modal);
+Vue.component('modalFav', modalFav);
 Vue.component('VueGoodshareFacebook', VueGoodshareFacebook);
 Vue.component('VueGoodshareTwitter', VueGoodshareTwitter);
 Vue.use(VueParticles);

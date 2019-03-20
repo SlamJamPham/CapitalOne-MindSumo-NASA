@@ -4,9 +4,23 @@
       <modal
         v-show="isModalVisible"
         @close="closeModal"
+        @addFavorites="addFavorites"
         :image = "modalData"
         :keywords = "modalKeywords"
+        :favorites = "favorites"
         v-bind:url = "modalURL"/>
+      <modalFav
+        v-show="isModalVisible2"
+        @close2="closeModal2"
+        @removeFavorites="removeFavorites"
+        :favorites = "favorites"/>
+      <button
+      type="button"
+      class="btn"
+      @click="showModal2"
+    >
+      Open Favorites
+    </button>
       <h1>{{title}}</h1>
         <form @submit.prevent="formSubmitted()">
           <div class="row">
@@ -87,7 +101,10 @@
   </div>
 </template>
 
-
+<script src="https://unpkg.com/vue"></script>
+<script
+  src="https://cdn.rawgit.com/officert/vue-slideout-panel/a07d8e2e/dist/vue2-slideout-panel.min.js">
+</script>
 <script>
 import API from './API';
 import modal from './components/modal.vue';
@@ -110,9 +127,11 @@ export default {
       location: '',
       start_date: '1900',
       end_date: '2019',
+      favorites: [],
 
       // data to pass to modal
       isModalVisible: false,
+      isModalVisible2: false,
       modalData: [],
       modalKeywords: [],
       modalURL: '',
@@ -127,29 +146,37 @@ export default {
         .then((images) => {
           this.images = images;
           this.loading = false;
+
+          //Checks if no results
           if (this.images.length === 0) this.nothing = true;
           else this.nothing = false;
         });
     },
     containsKey(obj, key) {
+      //array for certain element
       return Object.keys(obj).includes(key);
     },
     showModal(data) {
       this.modalData = data;
+
       // checks if array has keyword parameter
       if (this.containsKey(data.data[0], 'keywords')) {
         // checks if keywords are in one string, if true = split the string
         const str = data.data[0].keywords[0];
         this.modalKeywords = [];
-        if (str.indexOf(',') > -1 && data.data[0].keywords.length === 1) this.modalKeywords = str.split(',');
-        else if (str.indexOf(';') > -1 && data.data[0].keywords.length === 1) this.modalKeywords = str.split(';');
+
+        //Filters Tags if incorrectly formatted
+        if (str.indexOf(',') > -1 && data.data[0].keywords.length === 1)
+          this.modalKeywords = str.split(',');
+        else if (str.indexOf(';') > -1 && data.data[0].keywords.length === 1)
+          this.modalKeywords = str.split(';');
         else this.modalKeywords = data.data[0].keywords;
       }
       this.modalURL = (data.links[0].href);
       this.isModalVisible = true;
     },
     closeModal([info, center]) {
-      // checks if user clicked on tag
+      // checks if user clicked on tag in modal
       if (info !== '') {
         this.location = '';
         this.searchTerm = '';
@@ -164,7 +191,24 @@ export default {
       }
       this.isModalVisible = false;
     },
-
+    showModal2(){
+      this.isModalVisible2 = true;
+    },
+    closeModal2(){
+      this.isModalVisible2 = false;
+    },
+    addFavorites(imageAdd) {
+      //adds image to favorites
+      this.favorites.push(imageAdd);
+    },
+    removeFavorites(imageLose) {
+      //removes corresponding image
+      var index = this.favorites.indexOf(imageLose);
+      if (index !== -1) {
+        this.favorites.splice(index, 1);
+      }
+      console.log(this.favorites);
+    },
   },
 };
 </script>

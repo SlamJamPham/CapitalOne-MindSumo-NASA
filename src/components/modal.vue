@@ -5,7 +5,7 @@ import VueGoodshareTwitter from 'vue-goodshare/src/providers/Twitter.vue';
 
 export default {
   name: 'modal',
-  props: ['image', 'keywords', 'url'],
+  props: ['image', 'keywords', 'url', 'favorites'],
   component: {
     VueGoodshareFacebook,
     VueGoodshareTwitter,
@@ -14,6 +14,10 @@ export default {
     close([info, center]) {
       // returns keywords to search if tag clicked
       this.$emit('close', [info, center]);
+    },
+    addFavorites(imageAdd) {
+      // returns keywords to search if tag clicked
+      this.$emit('addFavorites', imageAdd);
     },
   },
 };
@@ -34,6 +38,14 @@ export default {
             <slot name="header">
               {{image.data[0].title}}
               <div class="row">
+                <button
+                v-if="!favorites.includes(image.links[0].href)"
+                type="button"
+                class="btn-green"
+                @click="addFavorites(image.links[0].href)"
+                aria-label="Close modal">
+                Add to Favorites
+                </button>
                 <vue-goodshare-facebook
                   v-bind:page_url="image.links[0].href"
                   title_social="Facebook"
