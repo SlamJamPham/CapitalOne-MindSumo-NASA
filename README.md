@@ -66,6 +66,9 @@ image{
 * Particles were implmented using Vue-Particles
 
 ```
+* Image hover and bounce animations were implmented using HoverCss
+* The particles were created using vue-particles.js
+
 ## Challenges
 * The search function created to return the API link with the correct search queries could only take one arguement. This aws fixed by sending it a single array contained the different queries ex: [searchTerm, location, keyword].
 * Image metadata was not uniform, especially keywords. Some descriptions contained links still in html format and keywords sometimes appeared as one string seperated by commas or semicolons.
