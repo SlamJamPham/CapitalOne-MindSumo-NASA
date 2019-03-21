@@ -40,7 +40,7 @@ App will contact the NASA Image Search API root.
 * A collection was returned that can be compared a Russian doll. It contained an array of items that contained arrays of objects that had arrays of links and of metadata. Data was displayed by returning the correct subarray.
 
 
-### Modal
+### Modal Metadata Display
 * Implemented by making images listen for @click event
 * To display the image metadata, the corresponding image object array from the collection was passed to the modal
 * (OPTIONAL) Each keyword/center text was created into a button. It returned the pressed keyword/center name back to the main API to perform the search query again.
