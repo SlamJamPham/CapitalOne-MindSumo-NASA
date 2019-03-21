@@ -4,9 +4,9 @@ Submission for the second round of the Capital One Software Engineering Summit.
 
 The challenge can be found [here](https://www.mindsumo.com/contests/nasa-image-archive).
 
-The final project can be found [here](https://phillippham-capitalone-nasa.herokuapp.com/?fbclid=IwAR2TiZuFdV0fE8mBv1vZzuWh874X1qxS9aMyKoPdRRIO633T5K2nY74UvTc).
+The final project can be found [here](https://phillippham-capitalone-nasa.herokuapp.com/?fbclid=IwAR2TiZuFdV0fE8mBv1vZzuWh874X1qxS9aMyKoPdRRIO633T5K2nY74UvTc). (Works best on Chrome)
 
-## List of of Frameworks and APIs (Works best on Chrome)
+## List of of Frameworks and APIs 
 * [Vue](https://vuejs.org/) to create app
 * [Express](https://expressjs.com/) to run servers
 * [Skeleton](http://getskeleton.com/) for frontend css
